@@ -45,7 +45,7 @@ For now, the services that support moving to both a new resource group and subsc
 - Batch
 - Data Factory
 - DocumentDB
-- HDInsight clusters (Windows clusters cannot be moved across subscriptions)
+- HDInsight clusters (Windows clusters cannot move between subscriptions)
 - Key Vault
 - Logic Apps
 - Mobile Engagement

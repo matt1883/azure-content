@@ -45,7 +45,7 @@ For now, the services that support moving to both a new resource group and subsc
 - Batch
 - Data Factory
 - DocumentDB
-- HDInsight clusters
+- HDInsight clusters (Linux clusters only)
 - Key Vault
 - Logic Apps
 - Mobile Engagement

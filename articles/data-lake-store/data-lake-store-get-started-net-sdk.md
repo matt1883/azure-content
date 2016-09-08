@@ -142,7 +142,7 @@ As a third option, the following snippet can be used to authenticate your applic
     var webApp_clientId = "<AAD-application-clientid>";
     System.Security.Cryptography.X509Certificates.X509Certificate2 clientCert = <AAD-application-client-certificate>
     var clientAssertionCertificate = new ClientAssertionCertificate(webApp_clientId, clientCert);
-    var token = ApplicationTokenProvider.LoginSilentWithCertificateAsync(domain, clientAssertionCertificate).Result;
+    var creds = ApplicationTokenProvider.LoginSilentWithCertificateAsync(domain, clientAssertionCertificate).Result;
 
 ## Create Data Lake Store client objects
 

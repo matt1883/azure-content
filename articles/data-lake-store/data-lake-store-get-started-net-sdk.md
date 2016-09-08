@@ -34,7 +34,7 @@ Learn how to use the [Azure Data Lake Store .NET SDK](https://msdn.microsoft.com
 * Visual Studio 2013 or 2015. The instructions below use Visual Studio 2015.
 * **An Azure subscription**. See [Get Azure free trial](https://azure.microsoft.com/pricing/free-trial/).
 * **Enable your Azure subscription** for Data Lake Store public preview. See [instructions](data-lake-store-get-started-portal.md#signup).
-* **Create an Azure Active Directory Application** if needed. There are two ways you can authenticate using Azure Active Direcotry - **interactive** and **non-interactive**.
+* **Create an Azure Active Directory Application** if you want your application to automatically authenticate with Azure Active Directory.
 
 	* **For non-interactive, service principal authentication** - In Azure Active Directory, you must create a **Web application**. Once you have created the application, retrieve the following values related to the application.
 		- Get **client ID** and **client secret** for the application
@@ -139,7 +139,7 @@ As a third option, the following snippet can be used to authenticate your applic
     SynchronizationContext.SetSynchronizationContext(new SynchronizationContext());
     var domain = "<AAD-directory-domain>";
     var webApp_clientId = "<AAD-application-clientid>";
-    X509Certificate2 clientCert = <AAD-application-client-certificate>
+    System.Security.Cryptography.X509Certificates.X509Certificate2 clientCert = <AAD-application-client-certificate>
     var clientAssertionCertificate = new ClientAssertionCertificate(webApp_clientId, clientCert);
     var token = ApplicationTokenProvider.LoginSilentWithCertificateAsync(domain, clientAssertionCertificate).Result;
 

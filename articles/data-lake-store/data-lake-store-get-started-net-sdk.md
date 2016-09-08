@@ -144,9 +144,9 @@ As a third option, the following snippet can be used to authenticate your applic
     var clientAssertionCertificate = new ClientAssertionCertificate(webApp_clientId, clientCert);
     var creds = ApplicationTokenProvider.LoginSilentWithCertificateAsync(domain, clientAssertionCertificate).Result;
 
-## Create Data Lake Store client objects
+## Create client objects
 
-The following snippet creates the Data Lake Store account and filesystem client objects.
+The following snippet creates the Data Lake Store account and filesystem client objects, which are used to issue requests to the service.
 
     // Create client objects
     var fileSystemClient = new DataLakeStoreFileSystemManagementClient(creds);
@@ -181,7 +181,7 @@ The following snippet shows a `CreateDirectory` method that you can use to creat
         _adlsFileSystemClient.FileSystem.Mkdirs(_adlsAccountName, path);
     }
 
-## Upload a file to Data Lake Store
+## Upload a file
 
 The following snippet shows an `UploadFile` method that you can use to upload files to a Data Lake Store account.
 

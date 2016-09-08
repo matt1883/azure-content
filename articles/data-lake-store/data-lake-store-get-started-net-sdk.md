@@ -36,7 +36,7 @@ Learn how to use the [Azure Data Lake Store .NET SDK](https://msdn.microsoft.com
 * **Enable your Azure subscription** for Data Lake Store public preview. See [instructions](data-lake-store-get-started-portal.md#signup).
 * **Create an Azure Active Directory Application** if needed. There are two ways you can authenticate using Azure Active Direcotry - **interactive** and **non-interactive**.
 
-	* **For non-interactive, service-principal authentication** - In Azure Active Directory, you must create a **Web application**. Once you have created the application, retrieve the following values related to the application.
+	* **For non-interactive, service principal authentication** - In Azure Active Directory, you must create a **Web application**. Once you have created the application, retrieve the following values related to the application.
 		- Get **client ID** and **client secret** for the application
 		- Assign the Azure Active Directory application to a role. The role can be at the level of the scope at which you want to give permission to the Azure Active Directory application. For example, you can assign the application at the subscription level or at the level of a resource group. 
 
@@ -108,9 +108,9 @@ Learn how to use the [Azure Data Lake Store .NET SDK](https://msdn.microsoft.com
             }
         }
 
-In the remaining sections of the article, you can see how to use the available .NET methods to perform operations such as authenticate users, upload files, etc. If you are looking for a complete sample on how to work with Data Lake Store, see the [Appendix](#appendix-sample-code) at the bottom of this article.
+In the remaining sections of the article, you can see how to use the available .NET methods to perform operations such as authentication, file upload, etc.
 
-## Authenticate the user
+## Authentication
 
 The following snippet can be used use for an interactive log in experience.
 
@@ -121,15 +121,27 @@ The following snippet can be used use for an interactive log in experience.
     var nativeClientApp_clientId = "1950a258-227b-4e31-a9cf-717495945fc2";
     var creds = UserTokenProvider.LoginWithPromptAsync(domain, ActiveDirectoryClientSettings.UsePromptOnly(nativeClientApp_clientId, new Uri("urn:ietf:wg:oauth:2.0:oob"))).Result;
 
-Alternatively, the following snippet can be used to authenticate your application non-interactively, using a service principal.
+Alternatively, the following snippet can be used to authenticate your application non-interactively, using the client secret / key for an application / service principal.
 
     // Service principal / appplication authentication with client secret / key
     //    Use the client ID and certificate of an existing AAD "Web App" application.
     SynchronizationContext.SetSynchronizationContext(new SynchronizationContext());
     var domain = "<AAD-directory-domain>";
     var webApp_clientId = "<AAD-application-clientid>";
-    string clientSecret = "<AAD-application-clientid>";
-    var creds = ApplicationTokenProvider.LoginSilentAsync(domain, new ClientCredential(webApp_clientId, clientSecret)).Result;
+    var clientSecret = "<AAD-application-clientid>";
+    var clientCredential = new ClientCredential(webApp_clientId, clientSecret);
+    var creds = ApplicationTokenProvider.LoginSilentAsync(domain, clientCredential).Result;
+
+As a third option, the following snippet can be used to authenticate your application non-interactively, using the certificate for an application / service principal.
+
+    // Service principal / application authentication with certificate
+    //    Use the client ID and certificate of an existing AAD "Web App" application.
+    SynchronizationContext.SetSynchronizationContext(new SynchronizationContext());
+    var domain = "<AAD-directory-domain>";
+    var webApp_clientId = "<AAD-application-clientid>";
+    X509Certificate2 clientCert = <AAD-application-client-certificate>
+    var clientAssertionCertificate = new ClientAssertionCertificate(webApp_clientId, clientCert);
+    var token = ApplicationTokenProvider.LoginSilentWithCertificateAsync(domain, clientAssertionCertificate).Result;
 
 ## Create Data Lake Store client objects
 

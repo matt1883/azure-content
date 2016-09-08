@@ -62,7 +62,7 @@ Learn how to use the [Azure Data Lake Store .NET SDK](https://msdn.microsoft.com
 
 	1. Right-click the project name in the Solution Explorer and click **Manage NuGet Packages**.
 	2. In the **Nuget Package Manager** tab, make sure that **Package source** is set to **nuget.org** and that **Include prerelease** check box is selected.
-	3. Search for and install the following Data Lake Store packages:
+	3. Search for and install the following NuGet packages:
 
 		* `Microsoft.Azure.Management.DataLake.Store` - This tutorial uses v0.12.5-preview.
 		* `Microsoft.Azure.Management.DataLake.StoreUploader` - This tutorial uses v0.10.6-preview.

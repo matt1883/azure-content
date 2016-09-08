@@ -83,7 +83,7 @@ Learn how to use the [Azure Data Lake Store .NET SDK](https://msdn.microsoft.com
 
 7. Declare the variables as shown below, and provide the values for Data Lake Store name and the resource group name. The Data Lake Store name you provide will be created by the application. The resource group you provide here should already exist. Also, make sure the local path and file name you provide here must exist on the computer. Add the following code snippet after the namespace declarations.
 
-	namespace SdkSample
+        namespace SdkSample
         {
             class Program
             {

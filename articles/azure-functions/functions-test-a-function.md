@@ -15,7 +15,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="multiple"
    ms.workload="na"
-   ms.date="03/30/2016"
+   ms.date="08/19/2016"
    ms.author="wesmc"/>
 
 # Testing Azure Functions
@@ -28,7 +28,7 @@ In this tutorial, we will walk through different approaches to testing functions
 
 For most of this tutorial, we will use a slightly modified version of the **HttpTrigger Nodejs Function** template that is available when creating a new function.  You can review the [Create your first Azure Function tutorial](functions-create-first-azure-function.md) if you need help creating a new function.  Just choose the **HttpTrigger Nodejs Function** template when creating the test function in the [Azure Portal].
 
-The default function template is basically a hello world function that echos back the name from the request body or query string parameter, `name=<your name>`.  We will update the code to also allow you to provide the name and an address as JSON content in the request body. Then the function will echo these back to the client when available.   
+The default function template is basically a hello world function that echoes back the name from the request body or query string parameter, `name=<your name>`.  We will update the code to also allow you to provide the name and an address as JSON content in the request body. Then the function will echo these back to the client when available.   
 
 Update the function with the following code which we will use for testing:
 
@@ -75,6 +75,33 @@ Update the function with the following code which we will use for testing:
 
 
 ## Test a function with Tools
+
+### Test with cURL
+
+Often when testing software, it's not necessary to look any further than the command-line to help debug your application, this is no different with functions.
+
+To test the function above, copy the **Function Url** from the portal. It will have the following form: 
+
+    https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>
+    
+This is the Url for triggering your function, we can test this by using the cURL command on the command-line to make a Get (`-G` or `--get`) request against our function:
+
+    curl -G https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>
+    
+This particular example above requires a query string parameter which can be passed as Data (`-d`) in the cURL command:
+
+    curl -G https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code> -d name=<Enter a name here>
+    
+Hit enter and you will see the output of the function on the command-line.
+
+![](./media/functions-test-a-function/curl-test.png)
+
+In the portal **Logs** window, output similar to the following is logged while executing the function:
+
+    2016-04-05T21:55:09  Welcome, you are now connected to log-streaming service.
+    2016-04-05T21:55:30.738 Function started (Id=ae6955da-29db-401a-b706-482fcd1b8f7a)
+    2016-04-05T21:55:30.738 Node.js HTTP trigger function processed a request. RequestUri=https://functionsExample.azurewebsites.net/api/HttpTriggerNodeJS1?code=XXXXXXX&name=Azure Functions
+    2016-04-05T21:55:30.738 Function completed (Success, Id=ae6955da-29db-401a-b706-482fcd1b8f7a)
 
 ### Test with a browser
 
@@ -211,7 +238,7 @@ To demonstrate this approach, we will first create a queue trigger function that
 > [AZURE.NOTE] If you use a different queue name, make sure the name you use conforms to the [Naming Queues and MetaData](https://msdn.microsoft.com/library/dd179349.aspx) rules.  Otherwise, you will get a HTTP Status code 400 : Bad Request. 
 
 1. In the [Azure Portal] for your Functions app, click **New Function** > **QueueTrigger - C#**.
-2. Enter the queue name to be monitored by the queue funcion 
+2. Enter the queue name to be monitored by the queue function 
 
 		queue-newusers 
 

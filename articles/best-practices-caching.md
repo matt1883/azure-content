@@ -4,7 +4,7 @@
    services=""
    documentationCenter="na"
    authors="dragon119"
-   manager="masimms"
+   manager="christb"
    editor=""
    tags=""/>
 
@@ -14,13 +14,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/01/2016"
+   ms.date="07/14/2016"
    ms.author="masashin"/>
 
 
 # Caching guidance
 
-![Patterns & practices logo](media/best-practices-caching/pnp-logo.png)
+[AZURE.INCLUDE [pnp-header](../includes/guidance-pnp-header-include.md)]
 
 Caching is a common technique that aims to improve the performance and
 scalability of a system. It does this by temporarily copying frequently accessed data
@@ -124,7 +124,7 @@ database becomes unavailable, client applications might be able to continue by u
 data that's held in the cache.
 
 Consider caching data that is read frequently but modified infrequently
-(for example, data that has a higher proportion of read operations than write operations ). However,
+(for example, data that has a higher proportion of read operations than write operations). However,
 we don't recommend that you use the cache as the authoritative store of critical information. Instead,
 ensure that all changes that your application cannot afford to lose are always saved to a
 persistent data store. This means that if the cache is unavailable, your application can
@@ -490,7 +490,7 @@ in the cloud.
 
  Redis is more than a simple cache server. It provides a distributed in-memory
 database with an extensive command set that supports many common scenarios. These
-are described later in this document, in the section Using  Redis caching. This section summarizes some of the key features tha Redis
+are described later in this document, in the section Using  Redis caching. This section summarizes some of the key features that Redis
 provides.
 
 ### Redis as an in-memory database
@@ -557,11 +557,11 @@ For more information, visit the [Redis security](http://redis.io/topics/security
 
 The Azure Redis Cache provides access to Redis servers running on servers hosted at an Azure datacenter; it acts as a façade that provides access control and security. You can provision a cache by using the Azure Management portal. The portal provides a number of predefined configurations, ranging from a 53GB cache running as a dedicated service that supports SSL communications (for privacy) and master/subordinate replication with an SLA of 99.9% availability, down to a 250MB cache without replication (no availability guarantees) running on shared hardware.
 
-Using the Azure Management portal you can also configure the eviction policy of the cache, and control access to the cache by adding users to the roles provided; Owner, Contributor, Reader. These roles define the operations that members can perform. For example, members of the Owner role have complete control over the cache (including security) and its contents, members of the Contributor role can read and write information in the cache, and members of the Reader role can only retrieve data from the cache.
+Using the Azure Management portal, you can also configure the eviction policy of the cache, and control access to the cache by adding users to the roles provided; Owner, Contributor, Reader. These roles define the operations that members can perform. For example, members of the Owner role have complete control over the cache (including security) and its contents, members of the Contributor role can read and write information in the cache, and members of the Reader role can only retrieve data from the cache.
 
 Most administrative tasks are performed through the Azure Management portal, and for this reason many of the administrative commands available in the standard version of Redis are not available, including the ability to modify the configuration programmatically, shutdown the Redis server, configure additional slaves, or forcibly save data to disk.
 
-The Azure management portal includes a convenient graphical display that enables you to monitor the performance of the cache. For example, you can view the number of connections being made, the number of requests performed, the volume of reads and writes, and the number of cache hits versus cache misses. Using this information you can determine the effectiveness of the cache and if necessary switch to a different configuration or change the eviction policy. Additionally, you can create alerts that send email messages to an administrator if one or more critical metrics fall outside of an expected range. For example, if the number of cache misses exceeds a specified value in the last hour, an administrator could be alerted as the cache may be too small or data may be being evicted too quickly.
+The Azure management portal includes a convenient graphical display that enables you to monitor the performance of the cache. For example, you can view the number of connections being made, the number of requests performed, the volume of reads and writes, and the number of cache hits versus cache misses. Using this information, you can determine the effectiveness of the cache and if necessary switch to a different configuration or change the eviction policy. Additionally, you can create alerts that send email messages to an administrator if one or more critical metrics fall outside of an expected range. For example, if the number of cache misses exceeds a specified value in the last hour, an administrator could be alerted as the cache may be too small or data may be being evicted too quickly.
 
 You can also monitor CPU, memory, and network usage for the cache.
 
@@ -577,11 +577,11 @@ Using the Session State Provider with Azure Redis Cache delivers several benefit
 - It supports controlled, concurrent access to the same session state data for multiple readers and a single writer, and
 - It can use compression to save memory and improve network performance.
 
-For more information visit the [ASP.NET Session State Provider for Azure Redis Cache](redis-cache/cache-asp.net-session-state-provider.md) page on the Microsoft website.
+For more information visit the [ASP.NET Session State Provider for Azure Redis Cache](redis-cache/cache-aspnet-session-state-provider.md) page on the Microsoft website.
 
 > [AZURE.NOTE] Do not use the Session State Provider for Azure Redis Cache for ASP.NET applications that run outside of the Azure environment. The latency of accessing the cache from outside of Azure can eliminate the performance benefits of caching data.
 
-Similarly, the Output Cache Provider for Azure Redis Cache enables you to save the HTTP responses generated by an ASP.NET web application. Using the Output Cache Provider with Azure Redis Cache can improve the response times of applications that render complex HTML output; application instances generating similar responses can make use of the shared output fragments in the cache rather than generating this HTML output afresh.  For more information visit the [ASP.NET Output Cache Provider for Azure Redis Cache](redis-cache/cache-asp.net-output-cache-provider.md) page on the Microsoft website.
+Similarly, the Output Cache Provider for Azure Redis Cache enables you to save the HTTP responses generated by an ASP.NET web application. Using the Output Cache Provider with Azure Redis Cache can improve the response times of applications that render complex HTML output; application instances generating similar responses can make use of the shared output fragments in the cache rather than generating this HTML output afresh.  For more information visit the [ASP.NET Output Cache Provider for Azure Redis Cache](redis-cache/cache-aspnet-output-cache-provider.md) page on the Microsoft website.
 
 ### Azure Redis cache
 
@@ -612,11 +612,11 @@ Using the session state provider with Azure Redis Cache delivers several benefit
 - Supporting controlled, concurrent access to the same session state data for multiple readers and a single writer.
 - Using compression to save memory and improve network performance.
 
-For more information, visit the [ASP.NET session state provider for Azure Redis Cache](redis-cache/cache-asp.net-session-state-provider.md) page on the Microsoft website.
+For more information, visit the [ASP.NET session state provider for Azure Redis Cache](redis-cache/cache-aspnet-session-state-provider.md) page on the Microsoft website.
 
 > [AZURE.NOTE] Do not use the session state provider for Azure Redis Cache with ASP.NET applications that run outside of the Azure environment. The latency of accessing the cache from outside of Azure can eliminate the performance benefits of caching data.
 
-Similarly, the output cache provider for Azure Redis Cache enables you to save the HTTP responses generated by an ASP.NET web application. Using the output cache provider with Azure Redis Cache can improve the response times of applications that render complex HTML output. Application instances that generate similar responses can make use of the shared output fragments in the cache rather than generating this HTML output afresh. For more information, visit the [ASP.NET output cache provider for Azure Redis Cache](redis-cache/cache-asp.net-output-cache-provider.md) page on the Microsoft website.
+Similarly, the output cache provider for Azure Redis Cache enables you to save the HTTP responses generated by an ASP.NET web application. Using the output cache provider with Azure Redis Cache can improve the response times of applications that render complex HTML output. Application instances that generate similar responses can make use of the shared output fragments in the cache rather than generating this HTML output afresh. For more information, visit the [ASP.NET output cache provider for Azure Redis Cache](redis-cache/cache-aspnet-output-cache-provider.md) page on the Microsoft website.
 
 ## Building a custom Redis cache
 
@@ -1217,11 +1217,12 @@ There are several points you should understand about the publish/subscribe mecha
   each message is independent and the order is unimportant, you can enable concurrent processing by the Redis system, which can help to
   improve responsiveness. You can achieve this in a StackExchange client by setting the PreserveAsyncOrder of the connection used by
   the subscriber to false:
-  ```csharp
-  ConnectionMultiplexer redisHostConnection = ...;
-  redisHostConnection.PreserveAsyncOrder = false;
-  ISubscriber subscriber = redisHostConnection.GetSubscriber();
-  ```
+
+```csharp
+ConnectionMultiplexer redisHostConnection = ...;
+redisHostConnection.PreserveAsyncOrder = false;
+ISubscriber subscriber = redisHostConnection.GetSubscriber();
+```
 
 ## Related patterns and guidance
 
@@ -1247,8 +1248,8 @@ The following pattern might also be relevant to your scenario when you implement
 - The [Redis security](http://redis.io/topics/security) page on the Redis website
 - The [Lap around Azure Redis Cache](https://azure.microsoft.com/blog/2014/06/04/lap-around-azure-redis-cache-preview/) page on the Azure blog
 - The [Running Redis on a CentOS Linux VM in Azure](http://blogs.msdn.com/b/tconte/archive/2012/06/08/running-redis-on-a-centos-linux-vm-in-windows-azure.aspx) page on the Microsoft website
-- The [ASP.NET session state provider for Azure Redis Cache](redis-cache/cache-asp.net-session-state-provider.md) page on the Microsoft website
-- The [ASP.NET output cache provider for Azure Redis Cache](redis-cache/cache-asp.net-output-cache-provider.md) page on the Microsoft website
+- The [ASP.NET session state provider for Azure Redis Cache](redis-cache/cache-aspnet-session-state-provider.md) page on the Microsoft website
+- The [ASP.NET output cache provider for Azure Redis Cache](redis-cache/cache-aspnet-output-cache-provider.md) page on the Microsoft website
 - The [An Introduction to Redis data types and abstractions](http://redis.io/topics/data-types-intro) page on the Redis website
 - The [Basic usage](https://github.com/StackExchange/StackExchange.Redis/blob/master/Docs/Basics.md) page on the StackExchange.Redis website
 - The [Transactions in Redis](https://github.com/StackExchange/StackExchange.Redis/blob/master/Docs/Transactions.md) page on the StackExchange.Redis repo

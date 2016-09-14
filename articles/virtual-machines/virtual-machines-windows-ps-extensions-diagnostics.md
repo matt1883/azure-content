@@ -4,8 +4,8 @@
 	documentationCenter=""
 	description="Learn how to use PowerShell to enable Azure Diagnostics in a virtual machine running Windows"
 	authors="sbtron"
-	manager=""
-	editor="""/>
+ 	manager="timlt"
+	editor=""/>
 
 <tags
 	ms.service="virtual-machines-windows"

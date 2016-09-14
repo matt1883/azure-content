@@ -1,10 +1,10 @@
 <properties
-	pageTitle="Tutorial: Azure Active Directory integration with Novatus | Microsoft Azure"
+	pageTitle="Tutorial: Azure Active Directory integration with HackerOne | Microsoft Azure"
 	description="Learn how to configure single sign-on between Azure Active Directory and HackerOne."
 	services="active-directory"
 	documentationCenter=""
 	authors="jeevansd"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/30/2016"
+	ms.date="07/09/2016"
 	ms.author="jeedes"/>
 
 
@@ -33,7 +33,7 @@ If you want to know more details about SaaS app integration with Azure AD, see [
 
 To configure Azure AD integration with HackerOne, you need the following items:
 
-- An Azure AD subscription
+- An Azure subscription
 - A HackerOne single-sign on enabled subscription
 
 
@@ -47,7 +47,7 @@ To test the steps in this tutorial, you should follow these recommendations:
 
 
 ## Scenario Description
-In this tutorial, you configure and test Azure AD single sign-on in a test environment. <br>
+In this tutorial, you configure and test Azure AD single sign-on in a test environment.  
 The scenario outlined in this tutorial consists of two main building blocks:
 
 1. Adding HackerOne from the gallery
@@ -59,26 +59,35 @@ To integrate HackerOne into Azure AD, you need to add HackerOne from the gallery
 
 **To add HackerOne from the gallery, perform the following steps:**
 
-1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**. <br><br>
-![Active Directory][1]<br>
+1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**. 
+
+	![Active Directory][1]
 
 2. From the **Directory** list, select the directory for which you want to enable directory integration.
 
-3. To open the applications view, in the directory view, click **Applications** in the top menu.<br><br>
-![Applications][2]<br>
-4. Click **Add** at the bottom of the page.<br><br>
-![Applications][3]<br>
-5. On the **What do you want to do** dialog, click **Add an application from the gallery**.<br><br>
-![Applications][4]<br>
-6. In the search box, type **HackerOne**.<br><br>
-![Creating an Azure AD test user](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_01.png)<br>
-7. In the results pane, select **HackerOne**, and then click **Complete** to add the application.<br><br>
+3. To open the applications view, in the directory view, click **Applications** in the top menu.
+
+	![Applications][2]
+
+4. Click **Add** at the bottom of the page.
+
+	![Applications][3]
+
+5. On the **What do you want to do** dialog, click **Add an application from the gallery**.
+
+![Applications][4]
+
+6. In the search box, type **HackerOne**.
+
+![Creating an Azure AD test user](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_01.png)
+
+7. In the results pane, select **HackerOne**, and then click **Complete** to add the application.
 
 
 ##  Configuring and testing Azure AD single sign-on
 Next, you configure and test Azure AD single sign-on with HackerOne based on a test user called "Britta Simon".
 
-For single sign-on to work, Azure AD needs to know what the counterpart user in HackerOne to an user in Azure AD is. In other words, a link relationship between an Azure AD user and the related user in HackerOne needs to be established.<br>
+For single sign-on to work, Azure AD needs to know what the counterpart user in HackerOne to an user in Azure AD is. In other words, a link relationship between an Azure AD user and the related user in HackerOne needs to be established.  
 This link relationship is established by assigning the value of the **user name** in Azure AD as the value of the **Username** in HackerOne.
 
 To configure and test Azure AD single sign-on with HackerOne, you need to complete the following building blocks:
@@ -93,76 +102,114 @@ To configure and test Azure AD single sign-on with HackerOne, you need to comple
 
 Next, you enable Azure AD single sign-on in the classic portal and to configure single sign-on in your HackerOne application.
 
+As part of this procedure, you are required to create a base-64 encoded certificate file.  
+If you are not familiar with this procedure, see [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o).
+
 **To configure Azure AD single sign-on with HackerOne, perform the following steps:**
 
 1. In the Azure classic portal, on the **HackerOne** application integration page, click **Configure single sign-on** to open the **Configure Single Sign-On**  dialog.
-<br><br> ![Configure Single Sign-On][6] <br>
+
+	![Configure Single Sign-On][6] 
 
 2. On the **How would you like users to sign on to HackerOne** page, select **Azure AD Single Sign-On**, and then click **Next**.
-<br><br> ![Configure Single Sign-On](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_03.png) <br>
+
+	![Configure Single Sign-On](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_03.png) 
 
 3. On the **Configure App Settings** dialog page, perform the following steps and then click **Next**:
-<br><br>![Configure Single Sign-On](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_04.png) <br>
+
+	![Configure Single Sign-On](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_04.png) 
 
 
-    a. In the Sign On URL textbox, type the URL used by your users to sign-on to your HackerOne application using the following pattern: **“https://hackerone.com/companyname/authentication”**. When referencing a generic name that **companyname** needs to be replaced by an actual name.<br>
+    a. In the **Sign On URL** textbox, type the URL used by your users to sign-on to your HackerOne application using the following pattern: **“https://hackerone.com/\<company name\>/authentication”**. 
 
-	b. In the IDENTIFIER textbox, type the tenant URL. Please contact the HackerOne Support Team via support@hackerone.com to get your tenant URL.
+    b. Contact the HackerOne support team via [support@hackerone.com](mailto:support@hackerone.com) to get your tenant URL if you don't know it.
 
-	c. Click **Next**
+	c. In the **Identifier** textbox, type the tenant URL. 
+
+	d. Click **Next**.
 
 
 4. On the **Configure single sign-on at HackerOne** page, perform the following steps and then click **Next**:
-<br><br>![Configure Single Sign-On](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_05.png) <br>
+
+	![Configure Single Sign-On](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_05.png) 
 
     a. Click **Download certificate**, and then save the file on your computer.
 
     b. Click **Next**.
 
 
-5. To get SSO configured for your application, You need sign in into the HackerOne tenant with admin user.
+1. Sign-on to your HackerOne tenant as an administrator.
+
+1. In the menu on the top, click the **Settings**.
+
+	![Configure Single Sign-On](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_001.png) 
+
+1. Navigate to "**Authentication**" and click "**Add SAML settings**".
+
+	![Configure Single Sign-On](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_003.png) 
+
+
+1. On the **SAML Settings** dialog, perform the following steps:
+
+	![Configure Single Sign-On](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_004.png) 
+
+    a. In the **Email Domain** textbox, type a registered domain.
+
+	b. On the Azure classic portal, copy the **Single Sign-On Service URL**, and then paste it into the Single Sign On URL textbox.
+
+    c. Create a **base-64 encoded** file from your downloaded certificate.  
+
+       >[AZURE.TIP] For more details, see [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o)
 	
-	a. Go to dashborad and click the **Settings** which is on the Upper right corner of the page.<br><br>![Configure Single Sign-On](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_001.png) <br>
+    d. Open your base-64 encoded certificate in notepad, copy the content of it into your clipboard, and then paste it to the **X509 Certificate** textbox.
 
-	b. Then Navigate to "**Authentication**" and click the button "**Add SAML settings**".<br><br>![Configure Single Sign-On](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_003.png) <br>
+    e. Click the **Save**
 
-	c. Fill out the **SAML Settings** form.<br><br>![Configure Single Sign-On](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_004.png) <br><br>
-		c1. Enter a registered domain in **Email Domain** textbox. To register the domain at HackerOne please contact support@hackerone.com.<br><br>
-		c2. Copy Single Sign-On Service URL from Azure AD to **Single Sign On URL** in HackerOne.<br><br>![Configure Single Sign-On](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_006.png) <br>
-		c3. Convert the downloaded certificate to base64 file and open it in Notepad, copy and paste in the HackerOne **X509 Certificate** text box.<br>
 
-	d. Click the **Save** button.<br><br>
-	e. Click **Run test** button and make sure the test works. If it does, request review for your SAML settings to HackerOne support team via support@hackerone.com and then they will approve them.<br><br>![Configure Single Sign-On](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_005.png) <br><br>
+1. On the Authentication Settings dialog, perform the following steps:
+
+	![Configure Single Sign-On](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_005.png) 
+
+    a. Click **Run test**.
+
+    b. If the value of the **Status** field equals **Last test status: created**, contact your HackerOne support team via [support@hackerone.com](mailto:support@hackerone.com) to request a review of your configuration.
 
 
 6. In the Azure classic portal, select the single sign-on configuration confirmation, and then click **Next**.
-<br><br>![Azure AD Single Sign-On][10]<br>
+
+	![Azure AD Single Sign-On][10]
 
 7. On the **Single sign-on confirmation** page, click **Complete**.  
-  <br>![Azure AD Single Sign-On][11]
+ 
+	![Azure AD Single Sign-On][11]
 
 
 
 
 ### Creating an Azure AD test user
-Next, you create a test user in the classic portal called Britta Simon.<br>
-In the Users list, select **Britta Simon**.<br><br>![Create Azure AD User][20]<br>
+
+Next, you create a test user in the classic portal called Britta Simon.  
+
+![Create Azure AD User][20]
 
 **To create a SECURE DELIVER test user in Azure AD, perform the following steps:**
 
 1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**.
-<br><br>![Creating an Azure AD test user](./media/active-directory-saas-hackerone-tutorial/create_aaduser_09.png) <br>
+
+	![Creating an Azure AD test user](./media/active-directory-saas-hackerone-tutorial/create_aaduser_09.png) 
 
 2. From the **Directory** list, select the directory for which you want to enable directory integration.
 
 3. To display the list of users, in the menu on the top, click **Users**.
-<br><br> ![Creating an Azure AD test user](./media/active-directory-saas-hackerone-tutorial/create_aaduser_03.png) <br>
+
+	![Creating an Azure AD test user](./media/active-directory-saas-hackerone-tutorial/create_aaduser_03.png) 
 
 4. To open the **Add User** dialog, in the toolbar on the bottom, click **Add User**.
-<br><br> ![Creating an Azure AD test user](./media/active-directory-saas-hackerone-tutorial/create_aaduser_04.png) <br>
+	![Creating an Azure AD test user](./media/active-directory-saas-hackerone-tutorial/create_aaduser_04.png) 
 
 5. On the **Tell us about this user** dialog page, perform the following steps:
-<br><br> ![Creating an Azure AD test user](./media/active-directory-saas-hackerone-tutorial/create_aaduser_05.png) <br>
+
+	![Creating an Azure AD test user](./media/active-directory-saas-hackerone-tutorial/create_aaduser_05.png) 
 
     a. As Type Of User, select New user in your organization.
 
@@ -171,7 +218,8 @@ In the Users list, select **Britta Simon**.<br><br>![Create Azure AD User][20]<b
     c. Click **Next**.
 
 6.  On the **User Profile** dialog page, perform the following steps:
-<br><br>![Creating an Azure AD test user](./media/active-directory-saas-hackerone-tutorial/create_aaduser_06.png) <br>
+
+	![Creating an Azure AD test user](./media/active-directory-saas-hackerone-tutorial/create_aaduser_06.png) 
 
     a. In the **First Name** textbox, type **Britta**.  
 
@@ -184,10 +232,12 @@ In the Users list, select **Britta Simon**.<br><br>![Create Azure AD User][20]<b
     e. Click **Next**.
 
 7. On the **Get temporary password** dialog page, click **create**.
-<br><br> ![Creating an Azure AD test user](./media/active-directory-saas-hackerone-tutorial/create_aaduser_07.png) <br>
+
+	![Creating an Azure AD test user](./media/active-directory-saas-hackerone-tutorial/create_aaduser_07.png) 
 
 8. On the **Get temporary password** dialog page, perform the following steps:
-<br><br>![Creating an Azure AD test user](./media/active-directory-saas-hackerone-tutorial/create_aaduser_08.png) <br>
+
+	![Creating an Azure AD test user](./media/active-directory-saas-hackerone-tutorial/create_aaduser_08.png) 
 
     a. Write down the value of the **New Password**.
 
@@ -208,29 +258,34 @@ There is no action item for you in this section. When you access HackerOne, a ne
 ### Assigning the Azure AD test user
 
 Next, you enable Britta Simon to use Azure single sign-on by granting her access to HackerOne.
-<br><br>![Assign User][200] <br>
+
+![Assign User][200] 
 
 **To assign Britta Simon to HackerOne, perform the following steps:**
 
 1. On the Azure classic portal, to open the applications view, in the directory view, click **Applications** in the top menu.
-<br><br>![Assign User][201] <br>
+
+	![Assign User][201] 
 
 2. In the applications list, select **HackerOne**.
-<br><br>![Configure Single Sign-On](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_50.png) <br>
+
+	![Configure Single Sign-On](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_50.png) 
 
 1. In the menu on the top, click **Users**.
-<br><br>![Assign User][203] <br>
+
+	![Assign User][203] 
 
 1. In the Users list, select **Britta Simon**.
 
 2. In the toolbar on the bottom, click **Assign**.
-<br><br>![Assign User][205]
+
+	![Assign User][205]
 
 
 
 ### Testing Single Sign-On
 
-Finally, you test your Azure AD single sign-on configuration using the Access Panel.<br>
+Finally, you test your Azure AD single sign-on configuration using the Access Panel.  
 When you click the HackerOne tile in the Access Panel, you should get automatically signed-on to your HackerOne application.
 
 

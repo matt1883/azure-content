@@ -12,7 +12,7 @@ authors="ashmaka"
 	ms.workload="search"
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
-	ms.date="03/10/2016"
+	ms.date="08/29/2016"
 	ms.author="ashmaka"/>
 
 # Create an Azure Search index

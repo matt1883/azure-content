@@ -14,15 +14,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="infrastructure-services"
-   ms.date="11/01/2015"
+   ms.date="03/29/2016"
    ms.author="kundanap"/>
 
 # Using the Custom Script extension for Linux VMs With Azure Resource Manager templates
 
 This article gives an overview of writing Azure Resource Manager templates with the Custom Script extension for bootstrapping workloads on a Linux VM.
-
-
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](virtual-machines-windows-classic-extensions-customscript.md).
 
 [AZURE.INCLUDE [virtual-machines-common-extensions-customscript](../../includes/virtual-machines-common-extensions-customscript.md)]
 
@@ -30,24 +27,31 @@ This article gives an overview of writing Azure Resource Manager templates with 
 
 Define the following extension resource in the Resource section of the template
 
-      {
-    "type": "Microsoft.Compute/virtualMachines/extensions",
-    "name": "MyCustomScriptExtension",
-    "apiVersion": "2015-05-01-preview",
-    "location": "[parameters('location')]",
-    "dependsOn": ["[concat('Microsoft.Compute/virtualMachines/',parameters('vmName'))]"],
-    "properties":
-    {
-      "publisher": "Microsoft.OSTCExtensions",
-      "type": "CustomScriptForLinux",
-      "typeHandlerVersion": "1.2",
-      "settings": {
-      "fileUris": [ "https: //raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-on-ubuntu/mongo-install-ubuntu.sh                        ],
-      "commandToExecute": "shmongo-install-ubuntu.sh"
-      }
-    }
-    }
-    
+```json
+{
+  "type": "Microsoft.Compute/virtualMachines/extensions",
+  "name": "MyCustomScriptExtension",
+  "apiVersion": "2015-05-01-preview",
+  "location": "[parameters('location')]",
+  "dependsOn": [
+    "[concat('Microsoft.Compute/virtualMachines/',parameters('vmName'))]"
+  ],
+  "properties": {
+    "publisher": "Microsoft.OSTCExtensions",
+    "type": "CustomScriptForLinux",
+    "typeHandlerVersion": "1.2",
+    "autoUpgradeMinorVersion": true,
+    "settings": {
+      "fileUris": [
+        "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-on-ubuntu/mongo-install-ubuntu.sh"
+      ],
+      "commandToExecute": "sh mongo-install-ubuntu.sh"
+    },
+    "protectedSettings": {}
+  }
+}
+```
+
 In the example above, replace the file URL and the file name with your own settings.
 
 After authoring the template, you can deploy it using the Azure CLI.
